@@ -1,0 +1,49 @@
+body {
+    background-image: url('assets/images/6.jpg');
+    /* background-color: #cccccc; */
+}
+
+.title {
+    color: white;
+    background-color: darkorange;
+}
+/* container w/ instructions */
+.instructions {
+   color: green;
+   background-color: tan;
+   /* may need more box size parameters */ 
+}
+
+/* green box where rando number appears + font + will findByID from js */
+#newNum {
+    color: purple;
+}
+
+.greenBox {
+    background-color:green;
+    /* might need to set specific size for this */
+}
+
+/* aqua box where wins and losses are tallied */
+#winCount {
+    color: black;
+}
+
+#lossCount {
+    color: black;
+}
+
+.tallyBox {
+    background-color: aqua;
+}
+
+/* insert any style on gems here, will try to crop */
+
+/* current total score box */
+#currScore {
+    color: white;
+}
+.scoreBox {
+    background-color: teal;
+}
+
