@@ -10,21 +10,12 @@
     <script src="assets/javascript/game.js"></script>
   </head>
   <body>
-     <!-- <audio controls autoplay>
-      <source src="link to song" type="audio/mpeg">
-  </audio> -->
-  <!-- <img src="" alt="You Smart"> -->
-  <style>
-        body {
-        background-image: url('assets/images/6.jpg');
-    } 
-    </style>
 <div class="container">
   <div class="row">
     <div class="col-md-4 title"><h1>Crystals Collector!</h1></div>
        </div> <!-- might need to adjust this if box needs to look like example -->
   <div class="row">
-    <div class="col-md-10 instructions">
+    <div class="col-md-5 instructions">
         <p>You will be given a random number at the start of the game.</p>
         <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
         <p>You win the game by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
@@ -33,26 +24,18 @@
     </div>
     </div>  
   <div class="row">
-    <div class="col-md-3 greenBox"><h2 id="new-Num"><!-- this is where the goal number will appear --></h2></div> 
+    <div class="col-md-3 greenBox"><h2 id="new-Num"></h2></div> 
     <div class="col-md-2 tallyBox"><h4><span id="result"></span></h4>
-        <br><h4>Wins: <span id ="winCount">default 0</span></h4>
-        <br><h4>Losses: <span id="lossCount">default 0</span></h4>
+        <br><h4>Wins: <span id ="winCount"> 0</span></h4>
+        <br><h4>Losses: <span id="lossCount"> 0</span></h4>
         </div>
     </div> 
 <div class="row">
-    <div class="col-md-4">
-                  <button id="button-1 quartz" class="btn btn-choice" value="0"> <!-- deleted value="1", 2,3, etc from these so can be random-->
-                    <h3>quartz</h3>
-                  </button>
-                <button id="button-2 diamond" class="btn btn-choice" value="0" >
-                    <h3>diamond</h3>
-                 </button>
-                <button id="button-3 topaz" class="btn btn-choice" value="3">
-                <h3>topaz</h3>
-                    </button>
-                <button id="button-4 emerald" class="btn btn-choice" value="4">
-                 <h3>emerald</h3>
-                </button>
+    <div class="col-md-6">
+                <button id="quartz" class="btn btn-choice"></button>
+                <button id="diamond" class="btn btn-choice"></button>
+                <button id="topaz" class="btn btn-choice"></button>
+                <button id="emerald" class="btn btn-choice"></button>
     </div>
 </div>
 <div class="row">
@@ -64,50 +47,49 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+ $(document).ready(function() {
 
-      // Initial Variables
-    var newNum = Math.floor(Math.random() * 121) + 19; //needs to be between 19-120, stack overflow says this is syntax
-    var quartz = Math.floor(Math.random() * 13) + 1; //crystals needs to be between 1-12 each, W3 says add 1 to end value
-    console.log(quartz);
-    var diamond = Math.floor(Math.random() * 13) + 1;
-    console.log(diamond);
-    var topaz = Math.floor(Math.random() * 13) + 1;
-    console.log(topaz);
-    var emerald = Math.floor(Math.random() * 13) + 1;
-    console.log(emerald);
-    var lockGame = false;
-// We log the computer's pick to console to make it easier to troubleshoot
-console.log("Goal number: " + newNum);
+  function randomizer() {
+  var crystalNums = [];
+  var newNum;
+  while(crystalNums.length < 4) {
+    currentValue = Math.floor(Math.random() * 12) + 1;
 
-// Here we create the on click event that gets the user's pick
-$(".btn-choice").on("click", function() { //need to redo so that it allows multiple clicks
-
-  // Here this lockGame line prevents the user from changing the option after the game is done.
-  if (lockGame !== true) {
-
-    // We get the value associated with the button the user picked from here
-    var playerPick = $(this).val(); //need to redo so that it allows multiple clicks
-    console.log("Player Pick: " + playerPick);
-
-    // We then reveal the computer's pick in the html
-    $("#new-Num").text(newNum);
-
-    // If your pick matched the computer's pick you let them know.
-    if (parseInt(playerPick) === newNum) { //need to redo so that it allows multiple clicks
-      $("#result").text("You won!");
-    //   lockGame = true;
-    }
-
-    // If the numbers did not match. You also let them know
-    else {
-      $("#result").text("You lost ☹️");
-    //   lockGame = true;
+    if(crystalNums.indexOf(currentValue) < 0) {
+      crystalNums.push(currentValue);
     }
   }
 
-});
-});
+  var newNum = Math.floor(Math.random() * 100)+19;
+  
+  return {
+    crystals: crystalNums,
+    goal: newNum,
+  };
+  console.log("Goal number: " + goal.newNum);
+}
+
+$(function() {
+  var setup = randomizer();
+  var counter = 0;
+
+  $("#new-Num").text(setup.goal);
+  $("#quartz").val(setup.crystals[0]);
+  $("#diamond").val(setup.crystals[1]);
+  $("#topaz").val(setup.crystals[2]);
+  $("#emerald").val(setup.crystals[3]);
+  
+
+  $(".btn-choice").on("click", function() {
+    var playerPick = $(this).val(); //need to add "while"? how to add additional clicks?
+    console.log("Player Pick: " + playerPick);
+    if(parseInt(playerPick) === setup.goal) {
+        $("#result").text("You won!");
+    } else {
+        $("#result").text("You lost ☹️");
+    }
+  });
+});})
  </script>
    
   </body>

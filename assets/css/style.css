@@ -1,49 +1,89 @@
 body {
-    background-image: url('assets/images/6.jpg');
-    /* background-color: #cccccc; */
+    background-image: url('../images/6.jpg');
 }
 
 .title {
     color: white;
-    background-color: darkorange;
+    background: rgba(215, 68, 86, .6);
+    border-radius: 25px;
+    margin: 10px;
 }
 /* container w/ instructions */
 .instructions {
-   color: green;
-   background-color: tan;
+   color: white;
+   background: rgba(151, 163, 187, .6);
+   border-radius: 25px;
+   padding: 20px;
+   margin: 10px;
    /* may need more box size parameters */ 
 }
 
-/* green box where rando number appears + font + will findByID from js */
+/* box where rando number appears + font + will findByID from js */
 #new-Num {
-    color: purple;
+    color: rgba(154, 46, 122)
 }
 
 .greenBox {
-    background-color:green;
-    /* might need to set specific size for this */
+    background:rgba(216, 69, 86, .6);
+    border-radius: 25px;
+    margin: 10px;
+    
 }
 
-/* aqua box where wins and losses are tallied */
+/* box where wins and losses are tallied */
 #winCount {
-    color: black;
+    color: white;
 }
 
 #lossCount {
-    color: black;
+    color: white;
 }
 
 .tallyBox {
-    background-color: aqua;
+    color: white;
+    background: rgba(147, 159, 175, .6);
+    border-radius: 25px;
+    margin: 10px;
 }
 
 /* insert any style on gems here, will try to crop */
+#quartz {
+    background-image: url('../images/quartz.jpg');
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    margin: 10px;
+}
+#diamond{
+    background-image: url('../images/diamond.jpg');
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    margin: 10px;
+}    
+#topaz{
+    background-image: url('../images/topaz.jpg');
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    margin: 10px;
+}
+#emerald{
+    background-image: url('../images/emerald.jpg');
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+    margin: 10px;
+}
 
 /* current total score box */
 #currScore {
     color: white;
 }
 .scoreBox {
-    background-color: teal;
+    background: rgba(154, 46, 122, .6);
+    color: white;
+    border-radius: 25px;
+    margin: 10px;
 }
 
