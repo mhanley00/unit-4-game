@@ -42,7 +42,7 @@
     <div class="col-md-3 scoreBox"><p>Your total score is:</p></div>
 </div>
 <div class="row">
-    <div class="col-md-3 scoreBox"><h3 id="currScore">player current score</h3></div>
+    <div class="col-md-3 scoreBox"><h3 id="currScore"></h3></div>
 </div>
 
 <script type="text/javascript">
@@ -71,23 +71,36 @@
 
 $(function() {
   var setup = randomizer();
-  var counter = 0;
+  
 
   $("#new-Num").text(setup.goal);
+  console.log(setup.goal);
   $("#quartz").val(setup.crystals[0]);
+  console.log(setup.crystals[0]);
   $("#diamond").val(setup.crystals[1]);
+  console.log(setup.crystals[1]);
   $("#topaz").val(setup.crystals[2]);
+  console.log(setup.crystals[2]);
   $("#emerald").val(setup.crystals[3]);
+  console.log(setup.crystals[3]);
+
+  
   
 
   $(".btn-choice").on("click", function() {
-    var playerPick = $(this).val(); //need to add "while"? how to add additional clicks?
-    console.log("Player Pick: " + playerPick);
-    if(parseInt(playerPick) === setup.goal) {
+    var counter = 0;
+    for (var i = 0; i < setup.crystals.length; i++){
+    var playerPick = ($(this).attr("#quartz") || $(this).val(setup.crystals[1]) || $(this).val(setup.crystals[2]) || $(this).val(setup.crystals[3])); 
+    playerPick = parseInt(playerPick);
+    
+    counter += playerPick;
+    $("#currScore").text(counter);
+    console.log("counter: " + parseInt(counter));
+    if(counter == setup.goal) {
         $("#result").text("You won!");
     } else {
         $("#result").text("You lost ☹️");
-    }
+    };}
   });
 });})
  </script>
